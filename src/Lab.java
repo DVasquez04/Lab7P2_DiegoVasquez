@@ -37,6 +37,11 @@ public class Lab extends javax.swing.JFrame {
             LeerVendedores();
         } catch (Exception e) {
         }
+        try {
+            LeerClientes();
+        } catch (IOException ex) {
+            Logger.getLogger(Lab.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -608,6 +613,14 @@ public class Lab extends javax.swing.JFrame {
 
     private void jb_AgregarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_AgregarVentaActionPerformed
         // TODO add your handling code here:
+        Vendedor ven = ((Vendedor)cb_VendedoresDisponibles.getSelectedItem());
+        Vehiculo veh = ((Vehiculo)cb_VehiculosDisponibles.getSelectedItem());
+        Cliente cli = ((Cliente)cb_ClientesDisponibles.getSelectedItem());
+        double cost = ((Vehiculo)cb_VehiculosDisponibles.getSelectedItem()).getPrecioVenta();
+        
+        Venta venta = new Venta(ven, cli, cost, veh);
+        ventas.add(venta);
+        JOptionPane.showMessageDialog(this, "Venta realizada Exitosamente");
     }//GEN-LAST:event_jb_AgregarVentaActionPerformed
 
     private void jb_TerminarDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_TerminarDiaActionPerformed
@@ -709,6 +722,106 @@ public class Lab extends javax.swing.JFrame {
                 //System.out.println(atr[0] +"\n"+atr[1]+"\n"+atr[2]+"\n"+atr[3]+"\n"+atr[4]);
                 Vehiculo carro = new Vehiculo(atr[0], atr[2], atr[1], Integer.parseInt(atr[3]), Double.parseDouble(atr[4]));
                 carros.add(carro);
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //IMPORTANTE SIEMPRE "LIBERAR" EL ARCHIVO, INCLUSO SI FALLA
+        br.close();
+        fr.close();
+    }
+    
+    public static void LeerVendedores() throws IOException{
+        File archivoVendedores = null;
+        FileReader fr = null;
+        BufferedReader br = null;
+        try {
+            //absoluto:
+            archivoVendedores = new File("C:\\Users\\Diego Vasquez\\OneDrive\\Desktop\\Progra2\\Lab7P2_DiegoVasquez\\Vendedores.txt");
+            fr = new FileReader(archivoVendedores);
+            br = new BufferedReader(fr);
+            String linea;
+//            Scanner sc = null;
+//            sc = new Scanner(archivoVehiculos);
+            ArrayList<String> tokens = new ArrayList();
+//            while(sc.hasNext()){
+//                String next = sc.nextLine();
+//                System.out.println(next+"++++");
+//            }
+//            sc.close();
+            String dato = "";
+            while ((linea = br.readLine()) != null) {
+                if (!linea.contains(";")) {
+                    dato += linea;
+                }else{
+                    dato+="\n]";
+                    tokens.add(dato);
+                    //System.out.println(dato);
+                    dato="";
+                }
+            }
+            for (int i = 0; i < tokens.size(); i++) {
+                String veh = tokens.get(i).toString();
+                String [] atr = veh.split(",");
+                atr[0] = atr[0].substring(2, atr[0].length());
+                atr[1] = atr[1].substring(1, atr[1].length());
+                atr[2] = atr[2].substring(1, atr[2].length()-2);
+                
+                //System.out.println(atr[0] +"\n"+atr[1]+"\n"+atr[2]);
+                Vendedor ven = new Vendedor(atr[0], Integer.parseInt(atr[1]), Double.parseDouble(atr[2]));
+                vendedores.add(ven);
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //IMPORTANTE SIEMPRE "LIBERAR" EL ARCHIVO, INCLUSO SI FALLA
+        br.close();
+        fr.close();
+    }
+    
+    public static void LeerClientes() throws IOException{
+        File archivoClientes = null;
+        FileReader fr = null;
+        BufferedReader br = null;
+        try {
+            //absoluto:
+            archivoClientes = new File("C:\\Users\\Diego Vasquez\\OneDrive\\Desktop\\Progra2\\Lab7P2_DiegoVasquez\\Clientes.txt");
+            fr = new FileReader(archivoClientes);
+            br = new BufferedReader(fr);
+            String linea;
+//            Scanner sc = null;
+//            sc = new Scanner(archivoVehiculos);
+            ArrayList<String> tokens = new ArrayList();
+//            while(sc.hasNext()){
+//                String next = sc.nextLine();
+//                System.out.println(next+"++++");
+//            }
+//            sc.close();
+            String dato = "";
+            while ((linea = br.readLine()) != null) {
+                if (!linea.contains(";")) {
+                    dato += linea;
+                }else{
+                    dato+="\n]";
+                    tokens.add(dato);
+                    //System.out.println(dato);
+                    dato="";
+                }
+            }
+            for (int i = 0; i < tokens.size(); i++) {
+                String veh = tokens.get(i).toString();
+                String [] atr = veh.split(",");
+                atr[0] = atr[0].substring(2, atr[0].length());
+                atr[1] = atr[1].substring(1, atr[1].length());
+                atr[2] = atr[2].substring(1, atr[2].length());
+                atr[3] = atr[3].substring(1, atr[3].length());
+                atr[4] = atr[4].substring(1, atr[4].length()-2);
+                
+                //System.out.println(atr[0] +"\n"+atr[1]+"\n"+atr[2]+"\n"+atr[3]+"\n"+atr[4]);
+                Cliente cli = new Cliente(atr[0], Integer.parseInt(atr[1]), atr[2], Integer.parseInt(atr[3]), Double.parseDouble(atr[4]));
+                clientes.add(cli);
             }
             
         } catch (Exception e) {
