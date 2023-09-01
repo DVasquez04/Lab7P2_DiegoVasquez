@@ -1,3 +1,10 @@
+
+import java.awt.Color;
+import static java.awt.Color.WHITE;
+import java.util.ArrayList;
+import javax.swing.JColorChooser;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -26,56 +33,487 @@ public class Lab extends javax.swing.JFrame {
     private void initComponents() {
 
         jp_BackGround = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        jt_YUH = new javax.swing.JTabbedPane();
+        jp_Vehiculos = new javax.swing.JPanel();
+        jl_Marca = new javax.swing.JLabel();
+        jt_Marca = new javax.swing.JTextField();
+        JL_ColorVehiculo = new javax.swing.JLabel();
+        jp_ColorVehiculo = new javax.swing.JPanel();
+        jl_modelo = new javax.swing.JLabel();
+        jt_Modelo = new javax.swing.JTextField();
+        jl_años = new javax.swing.JLabel();
+        jt_Años = new javax.swing.JTextField();
+        jl_precio = new javax.swing.JLabel();
+        jt_Precio = new javax.swing.JTextField();
+        jb_AgregarVehiculo = new javax.swing.JButton();
+        jl_Titulo = new javax.swing.JLabel();
+        jp_Vendedores = new javax.swing.JPanel();
+        jl_NombreVendedor = new javax.swing.JLabel();
+        jt_NombreVendedor = new javax.swing.JTextField();
+        jl_CantVendidosVendedor = new javax.swing.JLabel();
+        jt_CantVendidosVend = new javax.swing.JTextField();
+        jl_DineroGeneradoVendedor = new javax.swing.JLabel();
+        jt_DineroGeneradoVendedor = new javax.swing.JTextField();
+        jb_AgregarVendedor = new javax.swing.JButton();
+        jl_Titulo1 = new javax.swing.JLabel();
+        jp_Clientes = new javax.swing.JPanel();
+        jl_NombreCliente = new javax.swing.JLabel();
+        jt_NombreCliente = new javax.swing.JTextField();
+        JL_EdadCliente = new javax.swing.JLabel();
+        jl_ProfesionCliente = new javax.swing.JLabel();
+        jt_ProfesionCliente = new javax.swing.JTextField();
+        jl_CantCarrosCliente = new javax.swing.JLabel();
+        jt_CantCarrosCliente = new javax.swing.JTextField();
+        jl_SueldoCliente = new javax.swing.JLabel();
+        jt_SueldoCliente = new javax.swing.JTextField();
+        jt_EdadCliente = new javax.swing.JTextField();
+        jb_AgregarCliente = new javax.swing.JButton();
+        jl_Titulo2 = new javax.swing.JLabel();
+        jp_Venta = new javax.swing.JPanel();
+        jl_VendedoresDisponibles = new javax.swing.JLabel();
+        cb_VendedoresDisponibles = new javax.swing.JComboBox<>();
+        jl_ClientesDisp = new javax.swing.JLabel();
+        cb_ClientesDisponibles = new javax.swing.JComboBox<>();
+        jl_VehiculosDisponibles = new javax.swing.JLabel();
+        cb_VehiculosDisponibles = new javax.swing.JComboBox<>();
+        jb_AgregarVenta = new javax.swing.JButton();
+        jl_Titulo3 = new javax.swing.JLabel();
+        jb_TerminarDia = new javax.swing.JButton();
+        jp_Jtrees = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jp_BackGround.setBackground(new java.awt.Color(204, 255, 204));
         jp_BackGround.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 610, Short.MAX_VALUE)
+        jt_YUH.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_YUHMouseClicked(evt);
+            }
+        });
+
+        jp_Vehiculos.setBackground(new java.awt.Color(255, 102, 102));
+
+        jl_Marca.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jl_Marca.setForeground(new java.awt.Color(0, 0, 0));
+        jl_Marca.setText("Marca:");
+
+        JL_ColorVehiculo.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        JL_ColorVehiculo.setForeground(new java.awt.Color(0, 0, 0));
+        JL_ColorVehiculo.setText("COLOR:");
+
+        jp_ColorVehiculo.setBackground(new java.awt.Color(0, 0, 255));
+        jp_ColorVehiculo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jp_ColorVehiculo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jp_ColorVehiculoMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jp_ColorVehiculoLayout = new javax.swing.GroupLayout(jp_ColorVehiculo);
+        jp_ColorVehiculo.setLayout(jp_ColorVehiculoLayout);
+        jp_ColorVehiculoLayout.setHorizontalGroup(
+            jp_ColorVehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 38, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jp_ColorVehiculoLayout.setVerticalGroup(
+            jp_ColorVehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 34, Short.MAX_VALUE)
+        );
+
+        jl_modelo.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jl_modelo.setForeground(new java.awt.Color(0, 0, 0));
+        jl_modelo.setText("Modelo:");
+
+        jl_años.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jl_años.setForeground(new java.awt.Color(0, 0, 0));
+        jl_años.setText("Años Usado:");
+
+        jl_precio.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jl_precio.setForeground(new java.awt.Color(0, 0, 0));
+        jl_precio.setText("Precio:");
+
+        jb_AgregarVehiculo.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jb_AgregarVehiculo.setForeground(new java.awt.Color(0, 0, 0));
+        jb_AgregarVehiculo.setText("¡AGREGAR!");
+        jb_AgregarVehiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_AgregarVehiculoActionPerformed(evt);
+            }
+        });
+
+        jl_Titulo.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        jl_Titulo.setForeground(new java.awt.Color(0, 0, 0));
+        jl_Titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jl_Titulo.setText("Crear Vehiculos");
+
+        javax.swing.GroupLayout jp_VehiculosLayout = new javax.swing.GroupLayout(jp_Vehiculos);
+        jp_Vehiculos.setLayout(jp_VehiculosLayout);
+        jp_VehiculosLayout.setHorizontalGroup(
+            jp_VehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_VehiculosLayout.createSequentialGroup()
+                .addGroup(jp_VehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jp_VehiculosLayout.createSequentialGroup()
+                        .addGap(160, 160, 160)
+                        .addGroup(jp_VehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jp_VehiculosLayout.createSequentialGroup()
+                                .addComponent(jl_precio)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jt_Precio))
+                            .addGroup(jp_VehiculosLayout.createSequentialGroup()
+                                .addComponent(jl_Marca)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jt_Marca))
+                            .addGroup(jp_VehiculosLayout.createSequentialGroup()
+                                .addComponent(JL_ColorVehiculo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jp_ColorVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jp_VehiculosLayout.createSequentialGroup()
+                                .addComponent(jl_modelo)
+                                .addGap(18, 18, 18)
+                                .addComponent(jt_Modelo, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jp_VehiculosLayout.createSequentialGroup()
+                                .addComponent(jl_años)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jt_Años, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jp_VehiculosLayout.createSequentialGroup()
+                        .addGap(198, 198, 198)
+                        .addComponent(jb_AgregarVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jp_VehiculosLayout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addComponent(jl_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(169, Short.MAX_VALUE))
+        );
+        jp_VehiculosLayout.setVerticalGroup(
+            jp_VehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_VehiculosLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jl_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addGroup(jp_VehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_Marca, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jt_Marca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jp_VehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(JL_ColorVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jp_ColorVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jp_VehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_modelo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jt_Modelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jp_VehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_años, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jt_Años, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jp_VehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jt_Precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(58, 58, 58)
+                .addComponent(jb_AgregarVehiculo, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+                .addGap(108, 108, 108))
+        );
+
+        jt_YUH.addTab("Vehiculos", jp_Vehiculos);
+
+        jp_Vendedores.setBackground(new java.awt.Color(255, 51, 51));
+
+        jl_NombreVendedor.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jl_NombreVendedor.setForeground(new java.awt.Color(0, 0, 0));
+        jl_NombreVendedor.setText("Nombre:");
+
+        jl_CantVendidosVendedor.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jl_CantVendidosVendedor.setForeground(new java.awt.Color(0, 0, 0));
+        jl_CantVendidosVendedor.setText("Cantidad de Autos Vendidos: ");
+
+        jl_DineroGeneradoVendedor.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jl_DineroGeneradoVendedor.setForeground(new java.awt.Color(0, 0, 0));
+        jl_DineroGeneradoVendedor.setText("Dinero Generado:");
+
+        jb_AgregarVendedor.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jb_AgregarVendedor.setForeground(new java.awt.Color(0, 0, 0));
+        jb_AgregarVendedor.setText("¡AGREGAR!");
+        jb_AgregarVendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_AgregarVendedorActionPerformed(evt);
+            }
+        });
+
+        jl_Titulo1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        jl_Titulo1.setForeground(new java.awt.Color(0, 0, 0));
+        jl_Titulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jl_Titulo1.setText("Crear Vendedores");
+
+        javax.swing.GroupLayout jp_VendedoresLayout = new javax.swing.GroupLayout(jp_Vendedores);
+        jp_Vendedores.setLayout(jp_VendedoresLayout);
+        jp_VendedoresLayout.setHorizontalGroup(
+            jp_VendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_VendedoresLayout.createSequentialGroup()
+                .addGroup(jp_VendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jp_VendedoresLayout.createSequentialGroup()
+                        .addGap(184, 184, 184)
+                        .addComponent(jb_AgregarVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jp_VendedoresLayout.createSequentialGroup()
+                        .addGap(143, 143, 143)
+                        .addGroup(jp_VendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jp_VendedoresLayout.createSequentialGroup()
+                                .addComponent(jl_DineroGeneradoVendedor)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jt_DineroGeneradoVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jp_VendedoresLayout.createSequentialGroup()
+                                .addComponent(jl_CantVendidosVendedor)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jt_CantVendidosVend, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jp_VendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jl_Titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jp_VendedoresLayout.createSequentialGroup()
+                                    .addComponent(jl_NombreVendedor)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jt_NombreVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(164, Short.MAX_VALUE))
+        );
+        jp_VendedoresLayout.setVerticalGroup(
+            jp_VendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_VendedoresLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jl_Titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addGroup(jp_VendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_NombreVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jt_NombreVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(58, 58, 58)
+                .addGroup(jp_VendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_CantVendidosVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jt_CantVendidosVend, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(57, 57, 57)
+                .addGroup(jp_VendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_DineroGeneradoVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jt_DineroGeneradoVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(62, 62, 62)
+                .addComponent(jb_AgregarVendedor, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                .addGap(107, 107, 107))
+        );
+
+        jt_YUH.addTab("Vendedores", jp_Vendedores);
+
+        jp_Clientes.setBackground(new java.awt.Color(204, 0, 51));
+
+        jl_NombreCliente.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jl_NombreCliente.setForeground(new java.awt.Color(0, 0, 0));
+        jl_NombreCliente.setText("Nombre:");
+
+        JL_EdadCliente.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        JL_EdadCliente.setForeground(new java.awt.Color(0, 0, 0));
+        JL_EdadCliente.setText("Edad:");
+
+        jl_ProfesionCliente.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jl_ProfesionCliente.setForeground(new java.awt.Color(0, 0, 0));
+        jl_ProfesionCliente.setText("Profesion:");
+
+        jl_CantCarrosCliente.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jl_CantCarrosCliente.setForeground(new java.awt.Color(0, 0, 0));
+        jl_CantCarrosCliente.setText("Carros Comprados:");
+
+        jl_SueldoCliente.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jl_SueldoCliente.setForeground(new java.awt.Color(0, 0, 0));
+        jl_SueldoCliente.setText("Sueldo:");
+
+        jb_AgregarCliente.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jb_AgregarCliente.setForeground(new java.awt.Color(0, 0, 0));
+        jb_AgregarCliente.setText("¡AGREGAR!");
+        jb_AgregarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_AgregarClienteActionPerformed(evt);
+            }
+        });
+
+        jl_Titulo2.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        jl_Titulo2.setForeground(new java.awt.Color(0, 0, 0));
+        jl_Titulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jl_Titulo2.setText("Crear Clientes");
+
+        javax.swing.GroupLayout jp_ClientesLayout = new javax.swing.GroupLayout(jp_Clientes);
+        jp_Clientes.setLayout(jp_ClientesLayout);
+        jp_ClientesLayout.setHorizontalGroup(
+            jp_ClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_ClientesLayout.createSequentialGroup()
+                .addGroup(jp_ClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jp_ClientesLayout.createSequentialGroup()
+                        .addGap(215, 215, 215)
+                        .addComponent(jb_AgregarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jp_ClientesLayout.createSequentialGroup()
+                        .addGap(165, 165, 165)
+                        .addGroup(jp_ClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jl_Titulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jp_ClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jp_ClientesLayout.createSequentialGroup()
+                                    .addComponent(jl_SueldoCliente)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jt_SueldoCliente))
+                                .addGroup(jp_ClientesLayout.createSequentialGroup()
+                                    .addComponent(jl_NombreCliente)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jt_NombreCliente))
+                                .addGroup(jp_ClientesLayout.createSequentialGroup()
+                                    .addComponent(JL_EdadCliente)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jt_EdadCliente))
+                                .addGroup(jp_ClientesLayout.createSequentialGroup()
+                                    .addComponent(jl_ProfesionCliente)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jt_ProfesionCliente))
+                                .addGroup(jp_ClientesLayout.createSequentialGroup()
+                                    .addComponent(jl_CantCarrosCliente)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jt_CantCarrosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(131, Short.MAX_VALUE))
+        );
+        jp_ClientesLayout.setVerticalGroup(
+            jp_ClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_ClientesLayout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jl_Titulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addGroup(jp_ClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_NombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jt_NombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jp_ClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JL_EdadCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jt_EdadCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jp_ClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_ProfesionCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jt_ProfesionCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jp_ClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_CantCarrosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jt_CantCarrosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jp_ClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_SueldoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jt_SueldoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
+                .addComponent(jb_AgregarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                .addGap(96, 96, 96))
+        );
+
+        jt_YUH.addTab("Clientes", jp_Clientes);
+
+        jp_Venta.setBackground(new java.awt.Color(153, 0, 51));
+
+        jl_VendedoresDisponibles.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jl_VendedoresDisponibles.setForeground(new java.awt.Color(0, 0, 0));
+        jl_VendedoresDisponibles.setText("Vendedores Disponibles:");
+
+        jl_ClientesDisp.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jl_ClientesDisp.setForeground(new java.awt.Color(0, 0, 0));
+        jl_ClientesDisp.setText("Clientes Disponibles:");
+
+        jl_VehiculosDisponibles.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jl_VehiculosDisponibles.setForeground(new java.awt.Color(0, 0, 0));
+        jl_VehiculosDisponibles.setText("Vehiculos Disponibles:");
+
+        jb_AgregarVenta.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jb_AgregarVenta.setForeground(new java.awt.Color(0, 0, 0));
+        jb_AgregarVenta.setText("!VENDER¡");
+        jb_AgregarVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_AgregarVentaActionPerformed(evt);
+            }
+        });
+
+        jl_Titulo3.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        jl_Titulo3.setForeground(new java.awt.Color(0, 0, 0));
+        jl_Titulo3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jl_Titulo3.setText("Realizar Venta:");
+
+        jb_TerminarDia.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jb_TerminarDia.setForeground(new java.awt.Color(0, 0, 0));
+        jb_TerminarDia.setText("Terminar Dia");
+        jb_TerminarDia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_TerminarDiaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jp_VentaLayout = new javax.swing.GroupLayout(jp_Venta);
+        jp_Venta.setLayout(jp_VentaLayout);
+        jp_VentaLayout.setHorizontalGroup(
+            jp_VentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_VentaLayout.createSequentialGroup()
+                .addGroup(jp_VentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jp_VentaLayout.createSequentialGroup()
+                        .addGroup(jp_VentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jp_VentaLayout.createSequentialGroup()
+                                .addGap(101, 101, 101)
+                                .addGroup(jp_VentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jp_VentaLayout.createSequentialGroup()
+                                        .addComponent(jl_VehiculosDisponibles)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(cb_VehiculosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_VentaLayout.createSequentialGroup()
+                                        .addComponent(jl_ClientesDisp)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(cb_ClientesDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_VentaLayout.createSequentialGroup()
+                                        .addComponent(jl_VendedoresDisponibles)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(cb_VendedoresDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jp_VentaLayout.createSequentialGroup()
+                                        .addGap(75, 75, 75)
+                                        .addComponent(jb_AgregarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jp_VentaLayout.createSequentialGroup()
+                                .addGap(141, 141, 141)
+                                .addComponent(jl_Titulo3, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 152, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_VentaLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jb_TerminarDia, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jp_VentaLayout.setVerticalGroup(
+            jp_VentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_VentaLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(jl_Titulo3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addGroup(jp_VentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_VendedoresDisponibles)
+                    .addComponent(cb_VendedoresDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(jp_VentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_ClientesDisp)
+                    .addComponent(cb_ClientesDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(jp_VentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_VehiculosDisponibles)
+                    .addComponent(cb_VehiculosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addComponent(jb_AgregarVenta, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                .addGap(73, 73, 73)
+                .addComponent(jb_TerminarDia, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                .addGap(17, 17, 17))
+        );
+
+        jt_YUH.addTab("Ventas", jp_Venta);
+
+        jp_Jtrees.setBackground(new java.awt.Color(102, 0, 0));
+
+        javax.swing.GroupLayout jp_JtreesLayout = new javax.swing.GroupLayout(jp_Jtrees);
+        jp_Jtrees.setLayout(jp_JtreesLayout);
+        jp_JtreesLayout.setHorizontalGroup(
+            jp_JtreesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+        jp_JtreesLayout.setVerticalGroup(
+            jp_JtreesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 519, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("tab1", jPanel1);
+        jt_YUH.addTab("Jtrees", jp_Jtrees);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 610, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 519, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("tab2", jPanel2);
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 610, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 519, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("tab3", jPanel3);
-
-        jp_BackGround.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 610, 550));
+        jp_BackGround.add(jt_YUH, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 600, 550));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -94,6 +532,93 @@ public class Lab extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jb_AgregarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_AgregarVehiculoActionPerformed
+        // TODO add your handling code here:
+        try {
+            String marca = jt_Marca.getText();
+            Color color = jp_ColorVehiculo.getBackground();
+            String modelo = jt_Modelo.getText();
+            int años = Integer.parseInt(jt_Años.getText());
+            double precio = Double.parseDouble(jt_Precio.getText());
+
+            Vehiculo v = new Vehiculo(marca, color, modelo, años, precio);
+            carros.add(v);
+
+            jt_Marca.setText("");
+            jt_Modelo.setText("");
+            jp_ColorVehiculo.setBackground(Color.WHITE);
+            jt_Años.setText("");
+            jt_Precio.setText("");
+
+            JOptionPane.showMessageDialog(this, "Vehiculo agregado exitosamente!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Algo salio mal, intentelo de nuevo");
+        }
+        
+    }//GEN-LAST:event_jb_AgregarVehiculoActionPerformed
+
+    private void jp_ColorVehiculoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp_ColorVehiculoMouseClicked
+        // TODO add your handling code here:
+        jp_ColorVehiculo.setBackground(JColorChooser.showDialog(this, "Escoja su color", Color.BLUE));
+    }//GEN-LAST:event_jp_ColorVehiculoMouseClicked
+
+    private void jb_AgregarVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_AgregarVendedorActionPerformed
+        // TODO add your handling code here:
+        try {
+            String Nombre = jt_NombreVendedor.getText();
+            int cantCarros = Integer.parseInt(jt_CantVendidosVend.getText());
+            double dinGen = Double.parseDouble(jt_DineroGeneradoVendedor.getText());
+
+            Vendedor ven = new Vendedor(Nombre, cantCarros, dinGen);
+            vendedores.add(ven);
+
+            jt_NombreVendedor.setText("");
+            jt_CantVendidosVend.setText("");
+            jt_DineroGeneradoVendedor.setText("");
+
+            JOptionPane.showMessageDialog(this, "Vendedor agregado exitosamente!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Algo salio mal, intentelo de nuevo");
+        }
+    }//GEN-LAST:event_jb_AgregarVendedorActionPerformed
+
+    private void jb_AgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_AgregarClienteActionPerformed
+        // TODO add your handling code here:
+        try {
+            String Nombre = jt_NombreCliente.getText();
+            int Edad = Integer.parseInt(jt_EdadCliente.getText());
+            String prof = jt_ProfesionCliente.getText();
+            int carroscomp = Integer.parseInt(jt_CantCarrosCliente.getText());
+            double sueldo = Double.parseDouble(jt_SueldoCliente.getText());
+
+            Cliente c = new Cliente(Nombre, Edad, prof, carroscomp, sueldo);
+            clientes.add(c);
+
+            jt_NombreCliente.setText("");
+            jt_EdadCliente.setText("");
+            jt_ProfesionCliente.setText("");
+            jt_CantCarrosCliente.setText("");
+            jt_SueldoCliente.setText("");
+
+            JOptionPane.showMessageDialog(this, "Cliente agregado exitosamente!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Algo salio mal, intentelo de nuevo");
+        }
+    }//GEN-LAST:event_jb_AgregarClienteActionPerformed
+
+    private void jb_AgregarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_AgregarVentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jb_AgregarVentaActionPerformed
+
+    private void jb_TerminarDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_TerminarDiaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jb_TerminarDiaActionPerformed
+
+    private void jt_YUHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_YUHMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jt_YUHMouseClicked
 
     /**
      * @param args the command line arguments
@@ -129,12 +654,59 @@ public class Lab extends javax.swing.JFrame {
             }
         });
     }
-
+    ArrayList <Vehiculo> carros = new ArrayList();
+    ArrayList <Cliente> clientes = new ArrayList();
+    ArrayList <Vendedor> vendedores = new ArrayList();
+    ArrayList <Venta> ventas = new ArrayList();
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel JL_ColorVehiculo;
+    private javax.swing.JLabel JL_EdadCliente;
+    private javax.swing.JComboBox<String> cb_ClientesDisponibles;
+    private javax.swing.JComboBox<String> cb_VehiculosDisponibles;
+    private javax.swing.JComboBox<String> cb_VendedoresDisponibles;
+    private javax.swing.JButton jb_AgregarCliente;
+    private javax.swing.JButton jb_AgregarVehiculo;
+    private javax.swing.JButton jb_AgregarVendedor;
+    private javax.swing.JButton jb_AgregarVenta;
+    private javax.swing.JButton jb_TerminarDia;
+    private javax.swing.JLabel jl_CantCarrosCliente;
+    private javax.swing.JLabel jl_CantVendidosVendedor;
+    private javax.swing.JLabel jl_ClientesDisp;
+    private javax.swing.JLabel jl_DineroGeneradoVendedor;
+    private javax.swing.JLabel jl_Marca;
+    private javax.swing.JLabel jl_NombreCliente;
+    private javax.swing.JLabel jl_NombreVendedor;
+    private javax.swing.JLabel jl_ProfesionCliente;
+    private javax.swing.JLabel jl_SueldoCliente;
+    private javax.swing.JLabel jl_Titulo;
+    private javax.swing.JLabel jl_Titulo1;
+    private javax.swing.JLabel jl_Titulo2;
+    private javax.swing.JLabel jl_Titulo3;
+    private javax.swing.JLabel jl_VehiculosDisponibles;
+    private javax.swing.JLabel jl_VendedoresDisponibles;
+    private javax.swing.JLabel jl_años;
+    private javax.swing.JLabel jl_modelo;
+    private javax.swing.JLabel jl_precio;
     private javax.swing.JPanel jp_BackGround;
+    private javax.swing.JPanel jp_Clientes;
+    private javax.swing.JPanel jp_ColorVehiculo;
+    private javax.swing.JPanel jp_Jtrees;
+    private javax.swing.JPanel jp_Vehiculos;
+    private javax.swing.JPanel jp_Vendedores;
+    private javax.swing.JPanel jp_Venta;
+    private javax.swing.JTextField jt_Años;
+    private javax.swing.JTextField jt_CantCarrosCliente;
+    private javax.swing.JTextField jt_CantVendidosVend;
+    private javax.swing.JTextField jt_DineroGeneradoVendedor;
+    private javax.swing.JTextField jt_EdadCliente;
+    private javax.swing.JTextField jt_Marca;
+    private javax.swing.JTextField jt_Modelo;
+    private javax.swing.JTextField jt_NombreCliente;
+    private javax.swing.JTextField jt_NombreVendedor;
+    private javax.swing.JTextField jt_Precio;
+    private javax.swing.JTextField jt_ProfesionCliente;
+    private javax.swing.JTextField jt_SueldoCliente;
+    private javax.swing.JTabbedPane jt_YUH;
     // End of variables declaration//GEN-END:variables
 }

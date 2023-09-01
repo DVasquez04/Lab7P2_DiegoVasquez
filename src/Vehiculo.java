@@ -70,7 +70,7 @@ public class Vehiculo {
 
     @Override
     public String toString() {
-        return "Marca=" + Marca + "\nModelo=" + Modelo + "\nA\u00f1o=" + Año;
+        return Marca;
     }
     
 }

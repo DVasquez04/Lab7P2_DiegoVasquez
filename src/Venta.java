@@ -54,10 +54,5 @@ public class Venta {
     public void setCarro(Vehiculo Carro) {
         this.Carro = Carro;
     }
-
-    @Override
-    public String toString() {
-        return "vendedor=" + vendedor + "\ncliente=" + cliente + "\nCarro=" + Carro;
-    }
     
 }
