@@ -1,0 +1,14 @@
+[
+	Ford,
+	Focus RS,
+	blue,
+	2016,
+	250.000
+];
+[
+	Fard,
+	Fics RS,
+	red,
+	2020,
+	300.000
+];

@@ -1,7 +1,15 @@
 
 import java.awt.Color;
 import static java.awt.Color.WHITE;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
 
@@ -9,7 +17,6 @@ import javax.swing.JOptionPane;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author Diego Vasquez
@@ -21,6 +28,15 @@ public class Lab extends javax.swing.JFrame {
      */
     public Lab() {
         initComponents();
+        try {
+            LeerVehiculos();
+        } catch (IOException ex) {
+            Logger.getLogger(Lab.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            LeerVendedores();
+        } catch (Exception e) {
+        }
     }
 
     /**
@@ -38,7 +54,6 @@ public class Lab extends javax.swing.JFrame {
         jl_Marca = new javax.swing.JLabel();
         jt_Marca = new javax.swing.JTextField();
         JL_ColorVehiculo = new javax.swing.JLabel();
-        jp_ColorVehiculo = new javax.swing.JPanel();
         jl_modelo = new javax.swing.JLabel();
         jt_Modelo = new javax.swing.JTextField();
         jl_años = new javax.swing.JLabel();
@@ -47,6 +62,7 @@ public class Lab extends javax.swing.JFrame {
         jt_Precio = new javax.swing.JTextField();
         jb_AgregarVehiculo = new javax.swing.JButton();
         jl_Titulo = new javax.swing.JLabel();
+        jt_ColorCarro = new javax.swing.JTextField();
         jp_Vendedores = new javax.swing.JPanel();
         jl_NombreVendedor = new javax.swing.JLabel();
         jt_NombreVendedor = new javax.swing.JTextField();
@@ -79,18 +95,13 @@ public class Lab extends javax.swing.JFrame {
         jb_AgregarVenta = new javax.swing.JButton();
         jl_Titulo3 = new javax.swing.JLabel();
         jb_TerminarDia = new javax.swing.JButton();
+        jb_UpdateComboboxes = new javax.swing.JButton();
         jp_Jtrees = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jp_BackGround.setBackground(new java.awt.Color(204, 255, 204));
         jp_BackGround.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jt_YUH.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jt_YUHMouseClicked(evt);
-            }
-        });
 
         jp_Vehiculos.setBackground(new java.awt.Color(255, 102, 102));
 
@@ -101,25 +112,6 @@ public class Lab extends javax.swing.JFrame {
         JL_ColorVehiculo.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         JL_ColorVehiculo.setForeground(new java.awt.Color(0, 0, 0));
         JL_ColorVehiculo.setText("COLOR:");
-
-        jp_ColorVehiculo.setBackground(new java.awt.Color(0, 0, 255));
-        jp_ColorVehiculo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jp_ColorVehiculo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jp_ColorVehiculoMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jp_ColorVehiculoLayout = new javax.swing.GroupLayout(jp_ColorVehiculo);
-        jp_ColorVehiculo.setLayout(jp_ColorVehiculoLayout);
-        jp_ColorVehiculoLayout.setHorizontalGroup(
-            jp_ColorVehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 38, Short.MAX_VALUE)
-        );
-        jp_ColorVehiculoLayout.setVerticalGroup(
-            jp_ColorVehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 34, Short.MAX_VALUE)
-        );
 
         jl_modelo.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         jl_modelo.setForeground(new java.awt.Color(0, 0, 0));
@@ -167,7 +159,7 @@ public class Lab extends javax.swing.JFrame {
                             .addGroup(jp_VehiculosLayout.createSequentialGroup()
                                 .addComponent(JL_ColorVehiculo)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jp_ColorVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jt_ColorCarro))
                             .addGroup(jp_VehiculosLayout.createSequentialGroup()
                                 .addComponent(jl_modelo)
                                 .addGap(18, 18, 18)
@@ -194,10 +186,10 @@ public class Lab extends javax.swing.JFrame {
                     .addComponent(jl_Marca, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jt_Marca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jp_VehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jp_VehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JL_ColorVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jp_ColorVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jt_ColorCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
                 .addGroup(jp_VehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jl_modelo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jt_Modelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -437,6 +429,15 @@ public class Lab extends javax.swing.JFrame {
             }
         });
 
+        jb_UpdateComboboxes.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jb_UpdateComboboxes.setForeground(new java.awt.Color(0, 0, 0));
+        jb_UpdateComboboxes.setText("Update CB´s");
+        jb_UpdateComboboxes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_UpdateComboboxesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jp_VentaLayout = new javax.swing.GroupLayout(jp_Venta);
         jp_Venta.setLayout(jp_VentaLayout);
         jp_VentaLayout.setHorizontalGroup(
@@ -444,39 +445,42 @@ public class Lab extends javax.swing.JFrame {
             .addGroup(jp_VentaLayout.createSequentialGroup()
                 .addGroup(jp_VentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jp_VentaLayout.createSequentialGroup()
-                        .addGroup(jp_VentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(101, 101, 101)
+                        .addGroup(jp_VentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jp_VentaLayout.createSequentialGroup()
-                                .addGap(101, 101, 101)
-                                .addGroup(jp_VentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jp_VentaLayout.createSequentialGroup()
-                                        .addComponent(jl_VehiculosDisponibles)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cb_VehiculosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_VentaLayout.createSequentialGroup()
-                                        .addComponent(jl_ClientesDisp)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cb_ClientesDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_VentaLayout.createSequentialGroup()
-                                        .addComponent(jl_VendedoresDisponibles)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(cb_VendedoresDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jp_VentaLayout.createSequentialGroup()
-                                        .addGap(75, 75, 75)
-                                        .addComponent(jb_AgregarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jl_VehiculosDisponibles)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cb_VehiculosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_VentaLayout.createSequentialGroup()
+                                .addComponent(jl_ClientesDisp)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cb_ClientesDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_VentaLayout.createSequentialGroup()
+                                .addComponent(jl_VendedoresDisponibles)
+                                .addGap(18, 18, 18)
+                                .addComponent(cb_VendedoresDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jp_VentaLayout.createSequentialGroup()
-                                .addGap(141, 141, 141)
-                                .addComponent(jl_Titulo3, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 152, Short.MAX_VALUE))
+                                .addGap(75, 75, 75)
+                                .addComponent(jb_AgregarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_VentaLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jb_TerminarDia, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
+            .addGroup(jp_VentaLayout.createSequentialGroup()
+                .addGap(141, 141, 141)
+                .addComponent(jl_Titulo3, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jb_UpdateComboboxes)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jp_VentaLayout.setVerticalGroup(
             jp_VentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jp_VentaLayout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addComponent(jl_Titulo3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jp_VentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_Titulo3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jb_UpdateComboboxes))
                 .addGap(50, 50, 50)
                 .addGroup(jp_VentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jl_VendedoresDisponibles)
@@ -537,7 +541,7 @@ public class Lab extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             String marca = jt_Marca.getText();
-            Color color = jp_ColorVehiculo.getBackground();
+            String color = jt_ColorCarro.getText();
             String modelo = jt_Modelo.getText();
             int años = Integer.parseInt(jt_Años.getText());
             double precio = Double.parseDouble(jt_Precio.getText());
@@ -547,7 +551,7 @@ public class Lab extends javax.swing.JFrame {
 
             jt_Marca.setText("");
             jt_Modelo.setText("");
-            jp_ColorVehiculo.setBackground(Color.WHITE);
+            jt_ColorCarro.setText("");
             jt_Años.setText("");
             jt_Precio.setText("");
 
@@ -555,13 +559,8 @@ public class Lab extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Algo salio mal, intentelo de nuevo");
         }
-        
-    }//GEN-LAST:event_jb_AgregarVehiculoActionPerformed
 
-    private void jp_ColorVehiculoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp_ColorVehiculoMouseClicked
-        // TODO add your handling code here:
-        jp_ColorVehiculo.setBackground(JColorChooser.showDialog(this, "Escoja su color", Color.BLUE));
-    }//GEN-LAST:event_jp_ColorVehiculoMouseClicked
+    }//GEN-LAST:event_jb_AgregarVehiculoActionPerformed
 
     private void jb_AgregarVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_AgregarVendedorActionPerformed
         // TODO add your handling code here:
@@ -615,10 +614,24 @@ public class Lab extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jb_TerminarDiaActionPerformed
 
-    private void jt_YUHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_YUHMouseClicked
+    private void jb_UpdateComboboxesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_UpdateComboboxesActionPerformed
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jt_YUHMouseClicked
+        DefaultComboBoxModel modeloVendedores = (DefaultComboBoxModel) cb_VendedoresDisponibles.getModel();
+        for (int i = 0; i < vendedores.size(); i++) {
+            modeloVendedores.addElement(vendedores.get(i).toString());
+        }
+        DefaultComboBoxModel modeloClientes = (DefaultComboBoxModel) cb_ClientesDisponibles.getModel();
+        for (int i = 0; i < clientes.size(); i++) {
+            modeloClientes.addElement(clientes.get(i).toString());
+        }
+        DefaultComboBoxModel modeloVehiculos = (DefaultComboBoxModel) cb_VehiculosDisponibles.getModel();
+        for (int i = 0; i < carros.size(); i++) {
+            modeloVehiculos.addElement(carros.get(i).toString());
+        }
+        cb_ClientesDisponibles.setModel(modeloClientes);
+        cb_VehiculosDisponibles.setModel(modeloVehiculos);
+        cb_VendedoresDisponibles.setModel(modeloVendedores);
+    }//GEN-LAST:event_jb_UpdateComboboxesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -654,11 +667,63 @@ public class Lab extends javax.swing.JFrame {
             }
         });
     }
-    ArrayList <Vehiculo> carros = new ArrayList();
-    ArrayList <Cliente> clientes = new ArrayList();
-    ArrayList <Vendedor> vendedores = new ArrayList();
-    ArrayList <Venta> ventas = new ArrayList();
-    
+
+    public static void LeerVehiculos() throws IOException {
+        File archivoVehiculos = null;
+        FileReader fr = null;
+        BufferedReader br = null;
+        try {
+            //absoluto:
+            archivoVehiculos = new File("C:\\Users\\Diego Vasquez\\OneDrive\\Desktop\\Progra2\\Lab7P2_DiegoVasquez\\Vehiculos.txt");
+            fr = new FileReader(archivoVehiculos);
+            br = new BufferedReader(fr);
+            String linea;
+//            Scanner sc = null;
+//            sc = new Scanner(archivoVehiculos);
+            ArrayList<String> tokens = new ArrayList();
+//            while(sc.hasNext()){
+//                String next = sc.nextLine();
+//                System.out.println(next+"++++");
+//            }
+//            sc.close();
+            String dato = "";
+            while ((linea = br.readLine()) != null) {
+                if (!linea.contains(";")) {
+                    dato += linea;
+                }else{
+                    dato+="\n]";
+                    tokens.add(dato);
+                    //System.out.println(dato);
+                    dato="";
+                }
+            }
+            for (int i = 0; i < tokens.size(); i++) {
+                String veh = tokens.get(i).toString();
+                String [] atr = veh.split(",");
+                atr[0] = atr[0].substring(2, atr[0].length());
+                atr[1] = atr[1].substring(1, atr[1].length());
+                atr[2] = atr[2].substring(1, atr[2].length());
+                atr[3] = atr[3].substring(1, atr[3].length());
+                atr[4] = atr[4].substring(1, atr[4].length()-2);
+                
+                //System.out.println(atr[0] +"\n"+atr[1]+"\n"+atr[2]+"\n"+atr[3]+"\n"+atr[4]);
+                Vehiculo carro = new Vehiculo(atr[0], atr[2], atr[1], Integer.parseInt(atr[3]), Double.parseDouble(atr[4]));
+                carros.add(carro);
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //IMPORTANTE SIEMPRE "LIBERAR" EL ARCHIVO, INCLUSO SI FALLA
+        br.close();
+        fr.close();
+    }
+
+    static ArrayList<Vehiculo> carros = new ArrayList();
+    static ArrayList<Cliente> clientes = new ArrayList();
+    static ArrayList<Vendedor> vendedores = new ArrayList();
+    static ArrayList<Venta> ventas = new ArrayList();
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JL_ColorVehiculo;
     private javax.swing.JLabel JL_EdadCliente;
@@ -670,6 +735,7 @@ public class Lab extends javax.swing.JFrame {
     private javax.swing.JButton jb_AgregarVendedor;
     private javax.swing.JButton jb_AgregarVenta;
     private javax.swing.JButton jb_TerminarDia;
+    private javax.swing.JButton jb_UpdateComboboxes;
     private javax.swing.JLabel jl_CantCarrosCliente;
     private javax.swing.JLabel jl_CantVendidosVendedor;
     private javax.swing.JLabel jl_ClientesDisp;
@@ -690,7 +756,6 @@ public class Lab extends javax.swing.JFrame {
     private javax.swing.JLabel jl_precio;
     private javax.swing.JPanel jp_BackGround;
     private javax.swing.JPanel jp_Clientes;
-    private javax.swing.JPanel jp_ColorVehiculo;
     private javax.swing.JPanel jp_Jtrees;
     private javax.swing.JPanel jp_Vehiculos;
     private javax.swing.JPanel jp_Vendedores;
@@ -698,6 +763,7 @@ public class Lab extends javax.swing.JFrame {
     private javax.swing.JTextField jt_Años;
     private javax.swing.JTextField jt_CantCarrosCliente;
     private javax.swing.JTextField jt_CantVendidosVend;
+    private javax.swing.JTextField jt_ColorCarro;
     private javax.swing.JTextField jt_DineroGeneradoVendedor;
     private javax.swing.JTextField jt_EdadCliente;
     private javax.swing.JTextField jt_Marca;
