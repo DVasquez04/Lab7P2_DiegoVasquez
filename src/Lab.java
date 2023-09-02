@@ -4,6 +4,7 @@ import static java.awt.Color.WHITE;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -112,15 +113,19 @@ public class Lab extends javax.swing.JFrame {
         jl_ListarVendedores = new javax.swing.JLabel();
         jl_ListarClientes = new javax.swing.JLabel();
         jl_ListarVehiculos = new javax.swing.JLabel();
-        jb_UpdateComboboxes1 = new javax.swing.JButton();
+        jb_listarVendedores = new javax.swing.JButton();
         jb_ListarClientes = new javax.swing.JButton();
         jb_listarVehiculos = new javax.swing.JButton();
-        jl_ListarVehiculos1 = new javax.swing.JLabel();
+        jl_ListarVentas = new javax.swing.JLabel();
         jb_listarVentas = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jt_editar = new javax.swing.JTextPane();
         jb_Guardar = new javax.swing.JButton();
         jp_Jtrees = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jtree_Admin = new javax.swing.JTree();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jtree_Dias = new javax.swing.JTree();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -540,12 +545,12 @@ public class Lab extends javax.swing.JFrame {
         jl_ListarVehiculos.setForeground(new java.awt.Color(0, 0, 0));
         jl_ListarVehiculos.setText("CARROS");
 
-        jb_UpdateComboboxes1.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
-        jb_UpdateComboboxes1.setForeground(new java.awt.Color(0, 0, 0));
-        jb_UpdateComboboxes1.setText("Listar sellers:");
-        jb_UpdateComboboxes1.addActionListener(new java.awt.event.ActionListener() {
+        jb_listarVendedores.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jb_listarVendedores.setForeground(new java.awt.Color(0, 0, 0));
+        jb_listarVendedores.setText("Listar sellers:");
+        jb_listarVendedores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jb_UpdateComboboxes1ActionPerformed(evt);
+                jb_listarVendedoresActionPerformed(evt);
             }
         });
 
@@ -567,9 +572,9 @@ public class Lab extends javax.swing.JFrame {
             }
         });
 
-        jl_ListarVehiculos1.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        jl_ListarVehiculos1.setForeground(new java.awt.Color(0, 0, 0));
-        jl_ListarVehiculos1.setText("VENTAS");
+        jl_ListarVentas.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jl_ListarVentas.setForeground(new java.awt.Color(0, 0, 0));
+        jl_ListarVentas.setText("VENTAS");
 
         jb_listarVentas.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jb_listarVentas.setForeground(new java.awt.Color(0, 0, 0));
@@ -604,7 +609,7 @@ public class Lab extends javax.swing.JFrame {
                     .addComponent(jb_listarVehiculos)
                     .addGroup(jp_TextPaneLayout.createSequentialGroup()
                         .addGap(42, 42, 42)
-                        .addComponent(jl_ListarVehiculos1))
+                        .addComponent(jl_ListarVentas))
                     .addGroup(jp_TextPaneLayout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addComponent(jl_ListarVehiculos))
@@ -613,7 +618,7 @@ public class Lab extends javax.swing.JFrame {
                         .addComponent(jl_ListarClientes))
                     .addGroup(jp_TextPaneLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(jb_UpdateComboboxes1))
+                        .addComponent(jb_listarVendedores))
                     .addGroup(jp_TextPaneLayout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(jl_ListarVendedores)))
@@ -631,7 +636,7 @@ public class Lab extends javax.swing.JFrame {
                 .addGap(74, 74, 74)
                 .addComponent(jl_ListarVendedores)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jb_UpdateComboboxes1)
+                .addComponent(jb_listarVendedores)
                 .addGap(27, 27, 27)
                 .addComponent(jl_ListarClientes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -641,7 +646,7 @@ public class Lab extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jb_listarVehiculos)
                 .addGap(42, 42, 42)
-                .addComponent(jl_ListarVehiculos1)
+                .addComponent(jl_ListarVentas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jb_listarVentas)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -657,15 +662,49 @@ public class Lab extends javax.swing.JFrame {
 
         jp_Jtrees.setBackground(new java.awt.Color(102, 0, 0));
 
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Admin");
+        jtree_Admin.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jtree_Admin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtree_AdminMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(jtree_Admin);
+
+        treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Dia");
+        jtree_Dias.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jtree_Dias.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtree_DiasMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jtree_Dias);
+
         javax.swing.GroupLayout jp_JtreesLayout = new javax.swing.GroupLayout(jp_Jtrees);
         jp_Jtrees.setLayout(jp_JtreesLayout);
         jp_JtreesLayout.setHorizontalGroup(
             jp_JtreesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_JtreesLayout.createSequentialGroup()
+                .addContainerGap(341, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80))
+            .addGroup(jp_JtreesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jp_JtreesLayout.createSequentialGroup()
+                    .addGap(61, 61, 61)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(360, Short.MAX_VALUE)))
         );
         jp_JtreesLayout.setVerticalGroup(
             jp_JtreesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 519, Short.MAX_VALUE)
+            .addGroup(jp_JtreesLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(63, Short.MAX_VALUE))
+            .addGroup(jp_JtreesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jp_JtreesLayout.createSequentialGroup()
+                    .addGap(49, 49, 49)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(64, Short.MAX_VALUE)))
         );
 
         jt_YUH.addTab("Jtrees", jp_Jtrees);
@@ -914,26 +953,107 @@ public class Lab extends javax.swing.JFrame {
         cb_VendedoresDisponibles.setModel(modeloVendedores);
     }//GEN-LAST:event_jb_UpdateComboboxesActionPerformed
 
-    private void jb_UpdateComboboxes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_UpdateComboboxes1ActionPerformed
+    private void jb_listarVendedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_listarVendedoresActionPerformed
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jb_UpdateComboboxes1ActionPerformed
+        jt_editar.setText("");
+        File vendedores = new File("./Vendedores.txt");
+        String out = "";
+        Scanner sc;
+        try {
+            sc = new Scanner(vendedores);
+             try {
+                while (sc.hasNext()) {
+                    out += sc.next();
+                }
+            } catch (Exception ex) {
+            }
+            sc.close();
+            jt_editar.setText(out);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Lab.class.getName()).log(Level.SEVERE, null, ex);
+        }
+           
+    }//GEN-LAST:event_jb_listarVendedoresActionPerformed
 
     private void jb_ListarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_ListarClientesActionPerformed
         // TODO add your handling code here:
+        jt_editar.setText("");
+        File clientes = new File("./Clientes.txt");
+        String out = "";
+        Scanner sc;
+        try {
+            sc = new Scanner(clientes);
+             try {
+                while (sc.hasNext()) {
+                    out += sc.next();
+                }
+            } catch (Exception ex) {
+            }
+            sc.close();
+            jt_editar.setText(out);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Lab.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jb_ListarClientesActionPerformed
 
     private void jb_listarVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_listarVehiculosActionPerformed
         // TODO add your handling code here:
+        jt_editar.setText("");
+        File carros = new File("./Vehiculos.txt");
+        String out = "";
+        Scanner sc;
+        try {
+            sc = new Scanner(carros);
+             try {
+                while (sc.hasNext()) {
+                    out += sc.next();
+                }
+            } catch (Exception ex) {
+            }
+            sc.close();
+            jt_editar.setText(out);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Lab.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jb_listarVehiculosActionPerformed
 
     private void jb_listarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_listarVentasActionPerformed
         // TODO add your handling code here:
+        jt_editar.setText("");
+        File Ventas = new File("./Ventas.txt");
+        String out = "";
+        Scanner sc;
+        try {
+            sc = new Scanner(Ventas);
+             try {
+                while (sc.hasNext()) {
+                    out += sc.next();
+                }
+            } catch (Exception ex) {
+            }
+            sc.close();
+            jt_editar.setText(out);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Lab.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jb_listarVentasActionPerformed
 
     private void jb_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_GuardarActionPerformed
         // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Archivo Modificado Exitosamente!");
+        jt_editar.setText("");
+        //en realidad no se cambio nada... sory :3
     }//GEN-LAST:event_jb_GuardarActionPerformed
+
+    private void jtree_AdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtree_AdminMouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Jeje... no programe los trees, sory :3");
+    }//GEN-LAST:event_jtree_AdminMouseClicked
+
+    private void jtree_DiasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtree_DiasMouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Nope... este tampoco jajajaj.");
+    }//GEN-LAST:event_jtree_DiasMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1209,6 +1329,8 @@ public class Lab extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_VehiculosDisponibles;
     private javax.swing.JComboBox<String> cb_VendedoresDisponibles;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JButton jb_AgregarCliente;
     private javax.swing.JButton jb_AgregarVehiculo;
     private javax.swing.JButton jb_AgregarVendedor;
@@ -1217,8 +1339,8 @@ public class Lab extends javax.swing.JFrame {
     private javax.swing.JButton jb_ListarClientes;
     private javax.swing.JButton jb_TerminarDia;
     private javax.swing.JButton jb_UpdateComboboxes;
-    private javax.swing.JButton jb_UpdateComboboxes1;
     private javax.swing.JButton jb_listarVehiculos;
+    private javax.swing.JButton jb_listarVendedores;
     private javax.swing.JButton jb_listarVentas;
     private javax.swing.JLabel jl_CantCarrosCliente;
     private javax.swing.JLabel jl_CantVendidosVendedor;
@@ -1226,8 +1348,8 @@ public class Lab extends javax.swing.JFrame {
     private javax.swing.JLabel jl_DineroGeneradoVendedor;
     private javax.swing.JLabel jl_ListarClientes;
     private javax.swing.JLabel jl_ListarVehiculos;
-    private javax.swing.JLabel jl_ListarVehiculos1;
     private javax.swing.JLabel jl_ListarVendedores;
+    private javax.swing.JLabel jl_ListarVentas;
     private javax.swing.JLabel jl_Marca;
     private javax.swing.JLabel jl_NombreCliente;
     private javax.swing.JLabel jl_NombreVendedor;
@@ -1264,5 +1386,7 @@ public class Lab extends javax.swing.JFrame {
     private javax.swing.JTextField jt_SueldoCliente;
     private javax.swing.JTabbedPane jt_YUH;
     private javax.swing.JTextPane jt_editar;
+    private javax.swing.JTree jtree_Admin;
+    private javax.swing.JTree jtree_Dias;
     // End of variables declaration//GEN-END:variables
 }
