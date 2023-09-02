@@ -2,8 +2,10 @@
 import java.awt.Color;
 import static java.awt.Color.WHITE;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -613,10 +615,10 @@ public class Lab extends javax.swing.JFrame {
 
     private void jb_AgregarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_AgregarVentaActionPerformed
         // TODO add your handling code here:
-        Vendedor ven = ((Vendedor)cb_VendedoresDisponibles.getSelectedItem());
-        Vehiculo veh = ((Vehiculo)cb_VehiculosDisponibles.getSelectedItem());
-        Cliente cli = ((Cliente)cb_ClientesDisponibles.getSelectedItem());
-        double cost = ((Vehiculo)cb_VehiculosDisponibles.getSelectedItem()).getPrecioVenta();
+        Vendedor ven = vendedores.get(cb_VendedoresDisponibles.getSelectedIndex());
+        Vehiculo veh = carros.get(cb_VehiculosDisponibles.getSelectedIndex());
+        Cliente cli = clientes.get(cb_ClientesDisponibles.getSelectedIndex());
+        double cost = carros.get(cb_VehiculosDisponibles.getSelectedIndex()).getPrecioVenta();
         
         Venta venta = new Venta(ven, cli, cost, veh);
         ventas.add(venta);
@@ -625,6 +627,66 @@ public class Lab extends javax.swing.JFrame {
 
     private void jb_TerminarDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_TerminarDiaActionPerformed
         // TODO add your handling code here:
+        //pasar el arraylist de vehiculos a JSon format
+        FileWriter fwCar = null;
+        BufferedWriter bwCar = null;
+        try {
+            //siempre se sobre escribe el archivo
+            fwCar = new FileWriter("./Veiculos", false);
+            bwCar = new BufferedWriter(fwCar);
+            for (int i = 0; i < carros.size(); i++) {
+                bwCar.write("[\n");
+                bwCar.write("\t"+carros.get(i).getMarca()+",\n");
+                bwCar.write("\t"+carros.get(i).getModelo()+",\n");
+                bwCar.write("\t"+carros.get(i).getColor()+",\n");
+                bwCar.write("\t"+carros.get(i).getAño()+",\n");
+                bwCar.write("\t"+carros.get(i).getPrecioVenta()+"\n");
+                bwCar.write("];\n");
+            }
+            bwCar.flush();
+        } catch (Exception ex) {
+        }
+        try {
+            bwCar.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Lab.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            fwCar.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Lab.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        //lo mismo pero con los Vendedores:
+        FileWriter fwVen = null;
+        BufferedWriter bwVen = null;
+        
+        try {
+            //siempre se sobre escribe el archivo
+            fwVen = new FileWriter("./Vendedores", false);
+            bwVen = new BufferedWriter(fwVen);
+            for (int i = 0; i < carros.size(); i++) {
+                bwVen.write("[\n");
+                bwVen.write("\t"+vendedores.get(i).getNombre()+",\n");
+                bwVen.write("\t"+vendedores.get(i).getCantVendidos()+",\n");
+                bwVen.write("\t"+vendedores.get(i).getDineroGenerado()+"\n");
+                bwVen.write("];\n");
+            }
+            bwVen.flush();
+        } catch (Exception ex) {
+        }
+        try {
+            bwVen.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Lab.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            fwVen.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Lab.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        //ahora con clientes: 
     }//GEN-LAST:event_jb_TerminarDiaActionPerformed
 
     private void jb_UpdateComboboxesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_UpdateComboboxesActionPerformed
