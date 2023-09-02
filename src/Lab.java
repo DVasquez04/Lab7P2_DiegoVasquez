@@ -44,6 +44,11 @@ public class Lab extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(Lab.class.getName()).log(Level.SEVERE, null, ex);
         }
+        try {
+            LeerVentas();
+        } catch (IOException ex) {
+            Logger.getLogger(Lab.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -103,6 +108,18 @@ public class Lab extends javax.swing.JFrame {
         jl_Titulo3 = new javax.swing.JLabel();
         jb_TerminarDia = new javax.swing.JButton();
         jb_UpdateComboboxes = new javax.swing.JButton();
+        jp_TextPane = new javax.swing.JPanel();
+        jl_ListarVendedores = new javax.swing.JLabel();
+        jl_ListarClientes = new javax.swing.JLabel();
+        jl_ListarVehiculos = new javax.swing.JLabel();
+        jb_UpdateComboboxes1 = new javax.swing.JButton();
+        jb_ListarClientes = new javax.swing.JButton();
+        jb_listarVehiculos = new javax.swing.JButton();
+        jl_ListarVehiculos1 = new javax.swing.JLabel();
+        jb_listarVentas = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jt_editar = new javax.swing.JTextPane();
+        jb_Guardar = new javax.swing.JButton();
         jp_Jtrees = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -509,6 +526,135 @@ public class Lab extends javax.swing.JFrame {
 
         jt_YUH.addTab("Ventas", jp_Venta);
 
+        jp_TextPane.setBackground(new java.awt.Color(153, 51, 0));
+
+        jl_ListarVendedores.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jl_ListarVendedores.setForeground(new java.awt.Color(0, 0, 0));
+        jl_ListarVendedores.setText("VENDEDORES");
+
+        jl_ListarClientes.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jl_ListarClientes.setForeground(new java.awt.Color(0, 0, 0));
+        jl_ListarClientes.setText("CLIENTES");
+
+        jl_ListarVehiculos.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jl_ListarVehiculos.setForeground(new java.awt.Color(0, 0, 0));
+        jl_ListarVehiculos.setText("CARROS");
+
+        jb_UpdateComboboxes1.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jb_UpdateComboboxes1.setForeground(new java.awt.Color(0, 0, 0));
+        jb_UpdateComboboxes1.setText("Listar sellers:");
+        jb_UpdateComboboxes1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_UpdateComboboxes1ActionPerformed(evt);
+            }
+        });
+
+        jb_ListarClientes.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jb_ListarClientes.setForeground(new java.awt.Color(0, 0, 0));
+        jb_ListarClientes.setText("Listar Clientes:");
+        jb_ListarClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_ListarClientesActionPerformed(evt);
+            }
+        });
+
+        jb_listarVehiculos.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jb_listarVehiculos.setForeground(new java.awt.Color(0, 0, 0));
+        jb_listarVehiculos.setText("Listar Carros:");
+        jb_listarVehiculos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_listarVehiculosActionPerformed(evt);
+            }
+        });
+
+        jl_ListarVehiculos1.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jl_ListarVehiculos1.setForeground(new java.awt.Color(0, 0, 0));
+        jl_ListarVehiculos1.setText("VENTAS");
+
+        jb_listarVentas.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jb_listarVentas.setForeground(new java.awt.Color(0, 0, 0));
+        jb_listarVentas.setText("Listar Ventas:");
+        jb_listarVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_listarVentasActionPerformed(evt);
+            }
+        });
+
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setViewportView(jt_editar);
+
+        jb_Guardar.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jb_Guardar.setForeground(new java.awt.Color(0, 0, 0));
+        jb_Guardar.setText("GUARDAR");
+        jb_Guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_GuardarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jp_TextPaneLayout = new javax.swing.GroupLayout(jp_TextPane);
+        jp_TextPane.setLayout(jp_TextPaneLayout);
+        jp_TextPaneLayout.setHorizontalGroup(
+            jp_TextPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_TextPaneLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jp_TextPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jb_ListarClientes)
+                    .addComponent(jb_listarVentas)
+                    .addComponent(jb_listarVehiculos)
+                    .addGroup(jp_TextPaneLayout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(jl_ListarVehiculos1))
+                    .addGroup(jp_TextPaneLayout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(jl_ListarVehiculos))
+                    .addGroup(jp_TextPaneLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jl_ListarClientes))
+                    .addGroup(jp_TextPaneLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jb_UpdateComboboxes1))
+                    .addGroup(jp_TextPaneLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jl_ListarVendedores)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_TextPaneLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jb_Guardar)
+                .addGap(109, 109, 109))
+        );
+        jp_TextPaneLayout.setVerticalGroup(
+            jp_TextPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_TextPaneLayout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addComponent(jl_ListarVendedores)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jb_UpdateComboboxes1)
+                .addGap(27, 27, 27)
+                .addComponent(jl_ListarClientes)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jb_ListarClientes)
+                .addGap(38, 38, 38)
+                .addComponent(jl_ListarVehiculos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jb_listarVehiculos)
+                .addGap(42, 42, 42)
+                .addComponent(jl_ListarVehiculos1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jb_listarVentas)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_TextPaneLayout.createSequentialGroup()
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jb_Guardar)
+                .addGap(61, 61, 61))
+        );
+
+        jt_YUH.addTab("TextPane (Editar)", jp_TextPane);
+
         jp_Jtrees.setBackground(new java.awt.Color(102, 0, 0));
 
         javax.swing.GroupLayout jp_JtreesLayout = new javax.swing.GroupLayout(jp_Jtrees);
@@ -632,7 +778,7 @@ public class Lab extends javax.swing.JFrame {
         BufferedWriter bwCar = null;
         try {
             //siempre se sobre escribe el archivo
-            fwCar = new FileWriter("./Veiculos", false);
+            fwCar = new FileWriter("./Vehiculos.txt", false);
             bwCar = new BufferedWriter(fwCar);
             for (int i = 0; i < carros.size(); i++) {
                 bwCar.write("[\n");
@@ -663,9 +809,9 @@ public class Lab extends javax.swing.JFrame {
         
         try {
             //siempre se sobre escribe el archivo
-            fwVen = new FileWriter("./Vendedores", false);
+            fwVen = new FileWriter("./Vendedores.txt", false);
             bwVen = new BufferedWriter(fwVen);
-            for (int i = 0; i < carros.size(); i++) {
+            for (int i = 0; i < vendedores.size(); i++) {
                 bwVen.write("[\n");
                 bwVen.write("\t"+vendedores.get(i).getNombre()+",\n");
                 bwVen.write("\t"+vendedores.get(i).getCantVendidos()+",\n");
@@ -687,6 +833,66 @@ public class Lab extends javax.swing.JFrame {
         }
         
         //ahora con clientes: 
+        FileWriter fwCli = null;
+        BufferedWriter bwCli = null;
+        try {
+            //siempre se sobre escribe el archivo
+            fwCli = new FileWriter("./Clientes.txt", false);
+            bwCli = new BufferedWriter(fwCli);
+            for (int i = 0; i < clientes.size(); i++) {
+                bwCli.write("[\n");
+                bwCli.write("\t"+clientes.get(i).getNombre()+",\n");
+                bwCli.write("\t"+clientes.get(i).getEdad()+",\n");
+                bwCli.write("\t"+clientes.get(i).getProfesion()+",\n");
+                bwCli.write("\t"+clientes.get(i).getCarrosComprados()+",\n");
+                bwCli.write("\t"+clientes.get(i).getSueldoDisponible()+"\n");
+                bwCli.write("];\n");
+            }
+            bwCli.flush();
+        } catch (Exception ex) {
+        }
+        try {
+            bwCli.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Lab.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            fwCli.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Lab.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        //ahora lo mismo pero con ventas... omfg
+        FileWriter fwVenta = null;
+        BufferedWriter bwVenta = null;
+        
+        try {
+            //siempre se sobre escribe el archivo
+            fwVenta = new FileWriter("./Ventas.txt", false);
+            bwVenta = new BufferedWriter(fwVenta);
+            for (int i = 0; i < ventas.size(); i++) {
+                bwVenta.write("[\n");
+                bwVenta.write("\t"+ventas.get(i).getVendedor().toString()+",\n");
+                bwVenta.write("\t"+ventas.get(i).getCliente().toString()+",\n");
+                bwVenta.write("\t"+ventas.get(i).getCosto_Transaccion()+",\n");
+                bwVenta.write("\t"+ventas.get(i).getCarro().getMarca()+"\n");
+                bwVenta.write("];\n");
+            }
+            bwVenta.flush();
+        } catch (Exception ex) {
+        }
+        try {
+            bwVenta.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Lab.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            fwVenta.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Lab.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        JOptionPane.showMessageDialog(this, "Archivos de texto generados y o Modificados \nRevisar carpeta de proyecto :3\n (nuila tengo 5 niños judios en mi sotano) :3");
     }//GEN-LAST:event_jb_TerminarDiaActionPerformed
 
     private void jb_UpdateComboboxesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_UpdateComboboxesActionPerformed
@@ -707,6 +913,27 @@ public class Lab extends javax.swing.JFrame {
         cb_VehiculosDisponibles.setModel(modeloVehiculos);
         cb_VendedoresDisponibles.setModel(modeloVendedores);
     }//GEN-LAST:event_jb_UpdateComboboxesActionPerformed
+
+    private void jb_UpdateComboboxes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_UpdateComboboxes1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jb_UpdateComboboxes1ActionPerformed
+
+    private void jb_ListarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_ListarClientesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jb_ListarClientesActionPerformed
+
+    private void jb_listarVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_listarVehiculosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jb_listarVehiculosActionPerformed
+
+    private void jb_listarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_listarVentasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jb_listarVentasActionPerformed
+
+    private void jb_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_GuardarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jb_GuardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -893,6 +1120,82 @@ public class Lab extends javax.swing.JFrame {
         br.close();
         fr.close();
     }
+    
+    public static void LeerVentas() throws IOException{
+        File archivoVentas = null;
+        FileReader fr = null;
+        BufferedReader br = null;
+        try {
+            //absoluto:
+            archivoVentas = new File("C:\\Users\\Diego Vasquez\\OneDrive\\Desktop\\Progra2\\Lab7P2_DiegoVasquez\\Ventas.txt");
+            fr = new FileReader(archivoVentas);
+            br = new BufferedReader(fr);
+            String linea;
+//            Scanner sc = null;
+//            sc = new Scanner(archivoVehiculos);
+            ArrayList<String> tokens = new ArrayList();
+//            while(sc.hasNext()){
+//                String next = sc.nextLine();
+//                System.out.println(next+"++++");
+//            }
+//            sc.close();
+            String dato = "";
+            while ((linea = br.readLine()) != null) {
+                if (!linea.contains(";")) {
+                    dato += linea;
+                }else{
+                    dato+="\n]";
+                    tokens.add(dato);
+                    //System.out.println(dato);
+                    dato="";
+                }
+            }
+            for (int i = 0; i < tokens.size(); i++) {
+                String veh = tokens.get(i).toString();
+                String [] atr = veh.split(",");
+                atr[0] = atr[0].substring(2, atr[0].length());
+                atr[1] = atr[1].substring(1, atr[1].length());
+                atr[2] = atr[2].substring(1, atr[2].length());
+                atr[3] = atr[3].substring(1, atr[3].length()-2);
+                
+                Vendedor thisVen = null;
+                Cliente thisCli = null;
+                Vehiculo carro = null;
+                
+                //System.out.println(atr[0] +"\n"+atr[1]+"\n"+atr[2]+"\n"+atr[3]);
+                //ver que vendedor es, segun el nombre
+                for (int j = 0; j < vendedores.size(); j++) {
+                    if(atr[0].equals(vendedores.get(j).getNombre())){
+                        thisVen = vendedores.get(j);
+                    }
+                }//fin vendedor
+                
+                //ver que Cliente es, segun el nombre
+                for (int j = 0; j < clientes.size(); j++) {
+                    if(atr[1].equals(clientes.get(j).getNombre())){
+                        thisCli = clientes.get(j);
+                    }
+                }//fin cliente
+                
+                //ver que vehiculo es segun el modelo
+                for (int j = 0; j < carros.size(); j++) {
+                    if(atr[3].equals(carros.get(j).getMarca())){
+                        carro = carros.get(j);
+                    }
+                }//fin carros
+                
+                //hacer la venta y pasarla al arraylist
+                Venta venta = new Venta(thisVen, thisCli, Double.parseDouble(atr[2]), carro);
+                ventas.add(venta);
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //IMPORTANTE SIEMPRE "LIBERAR" EL ARCHIVO, INCLUSO SI FALLA
+        br.close();
+        fr.close();
+    }
 
     static ArrayList<Vehiculo> carros = new ArrayList();
     static ArrayList<Cliente> clientes = new ArrayList();
@@ -905,16 +1208,26 @@ public class Lab extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_ClientesDisponibles;
     private javax.swing.JComboBox<String> cb_VehiculosDisponibles;
     private javax.swing.JComboBox<String> cb_VendedoresDisponibles;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jb_AgregarCliente;
     private javax.swing.JButton jb_AgregarVehiculo;
     private javax.swing.JButton jb_AgregarVendedor;
     private javax.swing.JButton jb_AgregarVenta;
+    private javax.swing.JButton jb_Guardar;
+    private javax.swing.JButton jb_ListarClientes;
     private javax.swing.JButton jb_TerminarDia;
     private javax.swing.JButton jb_UpdateComboboxes;
+    private javax.swing.JButton jb_UpdateComboboxes1;
+    private javax.swing.JButton jb_listarVehiculos;
+    private javax.swing.JButton jb_listarVentas;
     private javax.swing.JLabel jl_CantCarrosCliente;
     private javax.swing.JLabel jl_CantVendidosVendedor;
     private javax.swing.JLabel jl_ClientesDisp;
     private javax.swing.JLabel jl_DineroGeneradoVendedor;
+    private javax.swing.JLabel jl_ListarClientes;
+    private javax.swing.JLabel jl_ListarVehiculos;
+    private javax.swing.JLabel jl_ListarVehiculos1;
+    private javax.swing.JLabel jl_ListarVendedores;
     private javax.swing.JLabel jl_Marca;
     private javax.swing.JLabel jl_NombreCliente;
     private javax.swing.JLabel jl_NombreVendedor;
@@ -932,6 +1245,7 @@ public class Lab extends javax.swing.JFrame {
     private javax.swing.JPanel jp_BackGround;
     private javax.swing.JPanel jp_Clientes;
     private javax.swing.JPanel jp_Jtrees;
+    private javax.swing.JPanel jp_TextPane;
     private javax.swing.JPanel jp_Vehiculos;
     private javax.swing.JPanel jp_Vendedores;
     private javax.swing.JPanel jp_Venta;
@@ -949,5 +1263,6 @@ public class Lab extends javax.swing.JFrame {
     private javax.swing.JTextField jt_ProfesionCliente;
     private javax.swing.JTextField jt_SueldoCliente;
     private javax.swing.JTabbedPane jt_YUH;
+    private javax.swing.JTextPane jt_editar;
     // End of variables declaration//GEN-END:variables
 }
